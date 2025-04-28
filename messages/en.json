@@ -1,0 +1,72 @@
+{
+  "NavBar": {
+    "createTask": "Post a Task",
+    "myTasks": "My Tasks",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "Home": {
+    "welcome": "Welcome to BountyNook!",
+    "subTitle": "A cozy little place for your side quests."
+  },
+  "Pagination": {
+    "next": "Next",
+    "prev": "Previous"
+  },
+  "Profile": {
+    "mine": "My Profile"
+  },
+  "TaskStatus": {
+    "PENDING": "Awaiting Pickup",
+    "ASSIGNED": "In Progress",
+    "COMPLETED": "Completed"
+  },
+  "TaskItem": {
+    "creator": "Posted by"
+  },
+  "CreateTaskPage": {
+    "title": "Post a New Task",
+    "submit": "Post Now",
+    "submitting": "Posting...",
+    "taskTitlePlaceholder": "Task Title",
+    "taskContentPlaceholder": "Describe the task...",
+    "taskRewardType": "Reward Type",
+    "ONLINE": "Online Payment",
+    "OFFLINE": "Offline/Negotiable",
+    "rewardAmount": "Reward Amount",
+    "currency": "Currency",
+    "USD": "USD",
+    "CNY": "CNY",
+    "rewardNote": "Notes for Reward"
+  },
+  "MyProfile": {
+    "title": "Edit My Profile",
+    "name": "Name",
+    "contact": "Contact Info",
+    "save": "Save Changes",
+    "saving": "Saving..."
+  },
+  "Dashboard": {
+    "created": "Posted",
+    "applied": "Applied",
+    "assigned": "Assigned to Me"
+  },
+  "ApplicationList": {
+    "noApplicationsTitle": "No Applications Yet",
+    "noApplicationsDescription": "You haven’t applied for any tasks yet. Time to find your next quest!"
+  },
+  "TaskList": {
+    "noTasksTitle": "No Tasks Available",
+    "noTasksDescription": "No one has posted a task yet. Be the first to start an adventure!"
+  },
+  "ApplicationSection": {
+    "apply": "Apply Now",
+    "submit": "Send Application",
+    "submitting": "Sending...",
+    "cancel": "Cancel",
+    "commentPlaceholder": "Write your application note..."
+  },
+  "AssignSection": {
+    "assignTo": "Pick this!"
+  }
+}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useTranslations } from "next-intl";
+
 interface PaginationProps {
   page: number
   totalPages: number
@@ -8,6 +10,7 @@ interface PaginationProps {
 }
 
 export function Pagination({ page, totalPages, onPrev, onNext }: PaginationProps) {
+  const t = useTranslations('Pagination')
   return (
     <div className="flex justify-center items-center gap-6 mt-10">
 
@@ -17,7 +20,7 @@ export function Pagination({ page, totalPages, onPrev, onNext }: PaginationProps
         disabled={page === 1}
         className="px-4 py-2 rounded-lg bg-yellow-100 text-yellow-800 border border-yellow-400 hover:bg-yellow-200 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        ⬅️ 上一页
+        ⬅️ {t('prev')}
       </button>
 
       {/* 当前页码 */}
@@ -31,7 +34,7 @@ export function Pagination({ page, totalPages, onPrev, onNext }: PaginationProps
         disabled={page >= totalPages}
         className="px-4 py-2 rounded-lg bg-yellow-100 text-yellow-800 border border-yellow-400 hover:bg-yellow-200 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        下一页 ➡️
+        {t('next')} ➡️
       </button>
 
     </div>

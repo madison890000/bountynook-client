@@ -13,6 +13,7 @@ import { toast } from "react-hot-toast";
 import { getUserInfo } from "@/lib/auth"
 import { ProfileLinkButton } from "@/components/ProfileLinkButton";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const schema = z.object({
   title: z.string().min(3, '标题至少3个字符'),
@@ -26,6 +27,7 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function CreateTaskPage() {
+  const t = useTranslations('CreateTaskPage')
   const [initialValues, setInitialValues] = useState<Partial<FormData>>({})
   const [user, setUser] = useState<any>(null)
   const {
@@ -92,7 +94,7 @@ export default function CreateTaskPage() {
   return (
     <div className="max-w-2xl mx-auto py-12 px-6 bg-gradient-to-br from-[#1c1b18] to-[#2d2c28] rounded-xl border border-[#8c7853] shadow-md">
       <h1 className="text-3xl font-extrabold text-center text-yellow-100 mb-8 tracking-widest italic">
-        📜 发布新任务
+        📜 {t('title')}
       </h1>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -100,7 +102,7 @@ export default function CreateTaskPage() {
         <div>
           <input
             {...register('title')}
-            placeholder="任务标题"
+            placeholder={t('taskTitlePlaceholder')}
             className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
           />
           {errors.title && <p className="text-red-400 text-xs mt-1">{errors.title.message}</p>}
@@ -110,7 +112,7 @@ export default function CreateTaskPage() {
         <div>
           <textarea
             {...register('description')}
-            placeholder="任务描述"
+            placeholder={t('taskContentPlaceholder')}
             rows={4}
             className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
           />
@@ -123,9 +125,9 @@ export default function CreateTaskPage() {
             {...register('rewardType')}
             className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
           >
-            <option value="">选择奖励类型</option>
-            <option value="ONLINE">线上支付</option>
-            <option value="OFFLINE">线下支付</option>
+            <option value="">{t('taskRewardType')}</option>
+            <option value="ONLINE">{t('ONLINE')}</option>
+            <option value="OFFLINE">{t('OFFLINE')}</option>
           </select>
           {errors.rewardType && <p className="text-red-400 text-xs mt-1">{errors.rewardType.message}</p>}
         </div>
@@ -137,7 +139,7 @@ export default function CreateTaskPage() {
               <input
                 {...register('amount')}
                 type="number"
-                placeholder="奖励金额"
+                placeholder={t('rewardAmount')}
                 className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
               />
               {errors.amount && <p className="text-red-400 text-xs mt-1">{errors.amount.message}</p>}
@@ -148,9 +150,9 @@ export default function CreateTaskPage() {
                 {...register('currency')}
                 className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
               >
-                <option value="">选择币种</option>
-                <option value="USD">美元 (USD)</option>
-                <option value="CNY">人民币 (CNY)</option>
+                <option value="">{t('currency')}</option>
+                <option value="USD">{t('USD')}</option>
+                <option value="CNY">{t('CNY')}</option>
               </select>
               {errors.currency && <p className="text-red-400 text-xs mt-1">{errors.currency.message}</p>}
             </div>
@@ -162,7 +164,7 @@ export default function CreateTaskPage() {
           <div>
             <input
               {...register('rewardNote')}
-              placeholder="线下付款备注（如面议）"
+              placeholder={t('rewardNote')}
               className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
             />
             {errors.rewardNote && <p className="text-red-400 text-xs mt-1">{errors.rewardNote.message}</p>}
@@ -183,7 +185,7 @@ export default function CreateTaskPage() {
               height={34}
               className="inline-block"
             />
-            {mutation.isPending ? '发布中...' : '发布任务'}
+            {mutation.isPending ? t('submitting') : t('submit')}
           </button>
         </AuthGuardButton>
 

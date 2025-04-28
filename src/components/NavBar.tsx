@@ -6,8 +6,10 @@ import { getToken, clearToken } from '@/lib/auth'
 import { useEffect, useState } from 'react'
 import { ProfileLinkButton } from "@/components/ProfileLinkButton";
 import Image from 'next/image'
+import { useTranslations } from "next-intl";
 
 export function NavBar() {
+  const t = useTranslations('NavBar')
   const [loggedIn, setLoggedIn] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
@@ -21,6 +23,11 @@ export function NavBar() {
     clearToken()
     setLoggedIn(false)
     router.push('/login')
+  }
+
+  const changeLocale = (locale: string) => {
+    const pathWithoutLocale = pathname.replace(/^\/(en|zh-CN)/, '')
+    router.push(`/${locale}${pathWithoutLocale}`)
   }
 
   return (
@@ -40,12 +47,12 @@ export function NavBar() {
       {/* 链接区域 */}
       <div className="flex items-center space-x-6 text-yellow-200 text-sm font-semibold">
         <Link href="/create-task" className="hover:text-yellow-300 transition-colors">
-          📜 发布任务
+          📜 {t('createTask')}
         </Link>
 
         {loggedIn && (
           <Link href="/dashboard" className="hover:text-yellow-300 transition-colors">
-            🧭 我的任务
+            🧭 {t('myTasks')}
           </Link>
         )}
       </div>
@@ -56,7 +63,7 @@ export function NavBar() {
           <ProfileLinkButton />
         ) : (
           <Link href="/login" className="hover:text-yellow-300 transition-colors text-sm font-semibold">
-            🔒 登录
+            {t('login')}
           </Link>
         )}
       </div>

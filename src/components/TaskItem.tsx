@@ -6,6 +6,7 @@ import { TaskStatusBadge } from './TaskStatusBadge'
 import { Task } from '@/types/model'
 import { SmallPin } from "@/components/SmallPin";
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 
 interface TaskItemProps {
   task: Task
@@ -13,7 +14,7 @@ interface TaskItemProps {
 
 export function TaskItem({ task }: TaskItemProps) {
   const router = useRouter()
-
+  const t = useTranslations('TaskItem')
   const handleClick = () => {
     router.push(`/tasks/${task.id}`)
   }
@@ -59,7 +60,7 @@ export function TaskItem({ task }: TaskItemProps) {
           currency={task.currency}
           rewardNote={task.rewardNote}
         />
-        <span>发布者：{task.creator?.name || task.creator?.email}</span>
+        <span>{t('creator')}：{task.creator?.name || task.creator?.email}</span>
         <TaskStatusBadge status={task.status} />
       </div>
     </div>

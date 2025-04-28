@@ -34,12 +34,14 @@ export default function TaskDetailPage() {
     <div className="max-w-2xl mx-auto py-10 px-4 space-y-8">
       <BasicInfoSection task={task} />
 
-      { !isCreator && <ContactSection
+      { !isCreator && (
+        <ContactSection
           task={task}
           isAssignee={isAssignee}
           contactVisible={contactVisible}
           setContactVisible={setContactVisible}
         />
+      )
       }
 
       {isCreator && task.status === 'PENDING' && (

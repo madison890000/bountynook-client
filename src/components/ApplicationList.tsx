@@ -3,8 +3,10 @@
 import { Pagination } from "@/components/Pagination";
 import { TaskItem } from "@/components/TaskItem";
 import { NoData } from "@/components/NoData";
+import { useTranslations } from "next-intl";
 
-export function ApplicationList({ title, applications, page, pagination, nextPage, prevPage, isLoading, error, goToDetail }: any) {
+export function ApplicationList({ applications, page, pagination, nextPage, prevPage, isLoading, error, goToDetail }: any) {
+  const t = useTranslations('ApplicationList')
   return (
     <div>
       {isLoading && <p className="text-center">加载中...</p>}
@@ -14,8 +16,8 @@ export function ApplicationList({ title, applications, page, pagination, nextPag
         {applications.length === 0 ? (
           <NoData
             emoji="📜"
-            title="没有申请记录"
-            description="你还没有申请任何任务，快去参与挑战吧！"
+            title={t('noApplicationsTitle')}
+            description={t('noApplicationsDescription')}
           />
         ) : (
           applications.map((app) => (

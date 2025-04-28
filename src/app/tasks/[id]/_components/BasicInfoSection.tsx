@@ -23,7 +23,7 @@ export function BasicInfoSection({ task }: { task: Task }) {
 
         {/* 奖励 */}
         <div className="flex items-center gap-2">
-          💰 奖励：
+          💰 ：
           <RewardBadge
             rewardType={task.rewardType}
             rewardNote={task.rewardNote}
@@ -34,16 +34,16 @@ export function BasicInfoSection({ task }: { task: Task }) {
 
         {/* 状态 */}
         <div className="flex items-center gap-2">
-          📌 状态：
+          📌 ：
           <TaskStatusBadge status={task.status} />
         </div>
 
         {/* 发布者 */}
-        <p>🧑 发布者：{task.creator.name || 'Momo'}</p>
+        <p>🧑 ：{task.creator.name || 'Momo'}</p>
 
         {/* 执行人 */}
         {task.assignee && (
-          <p>🤝 执行人：{task.assignee.name || 'Momo'}</p>
+          <p>🤝 ：{task.assignee.name || 'Momo'}</p>
         )}
       </div>
     </div>

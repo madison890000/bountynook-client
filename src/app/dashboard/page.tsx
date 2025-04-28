@@ -6,12 +6,14 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { TaskList } from "@/components/TaskList";
 import { ApplicationList } from "@/components/ApplicationList";
+import { useTranslations } from "next-intl";
 
 type TabType = 'CREATED' | 'APPLIED' | 'ASSIGNED'
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<TabType>('CREATED')
   const router = useRouter()
+  const t = useTranslations('Dashboard')
 
   const created = usePaginationQuery({
     queryKey: 'myCreatedTasks',
@@ -37,15 +39,14 @@ export default function DashboardPage() {
   const goToDetail = (taskId: string) => {
     router.push(`/tasks/${taskId}`)
   }
-  console.log(applied)
   return (
     <div className="max-w-5xl mx-auto py-10 px-4">
       {/* Tab切换 */}
       <div className="flex justify-center mb-10 gap-4">
         {[
-          { label: '📜 我发布的', value: 'CREATED' },
-          { label: '📝 我申请的', value: 'APPLIED' },
-          { label: '🏹 我执行的', value: 'ASSIGNED' },
+          { label: `📜 ${t('created')}`, value: 'CREATED' },
+          { label: `📝 ${t('applied')}`, value: 'APPLIED' },
+          { label: `🏹 ${t('assigned')}`, value: 'ASSIGNED' },
         ].map((tab) => (
           <button
             key={tab.value}
@@ -64,7 +65,6 @@ export default function DashboardPage() {
       {/* Tab内容 */}
       {activeTab === 'CREATED' && (
         <TaskList
-          title="我发布的任务"
           tasks={created.data}
           page={created.page}
           pagination={created.pagination}
@@ -78,7 +78,6 @@ export default function DashboardPage() {
 
       {activeTab === 'APPLIED' && (
         <ApplicationList
-          title="我申请的任务"
           applications={applied.data}
           page={applied.page}
           pagination={applied.pagination}
@@ -92,7 +91,6 @@ export default function DashboardPage() {
 
       {activeTab === 'ASSIGNED' && (
         <TaskList
-          title="我执行的任务"
           tasks={assigned.data}
           page={assigned.page}
           pagination={assigned.pagination}

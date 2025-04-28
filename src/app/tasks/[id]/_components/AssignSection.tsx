@@ -3,10 +3,12 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { assignTask } from '@/lib/endpoints'
 import { toast } from 'react-hot-toast'
+import { useTranslations } from "next-intl";
 
 export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
   const queryClient = useQueryClient()
 
+  const t = useTranslations('AssignSection')
   const mutation = useMutation({
     mutationFn: (applicationId: string) => assignTask(taskId, applicationId),
     onSuccess: () => {
@@ -42,7 +44,7 @@ export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
               disabled={mutation.isPending}
               className="px-6 py-3 rounded-lg font-bold tracking-wide text-yellow-100 border border-yellow-600 bg-gradient-to-br from-yellow-700 via-yellow-600 to-yellow-700 shadow-md hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {mutation.isPending ? '📜 分配中...' : '🏹 选TA'}
+              {mutation.isPending ? '📜 分配中...' : `🏹 ${t('assignTo')}`}
             </button>
           </li>
         ))}

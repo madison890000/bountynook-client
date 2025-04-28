@@ -4,8 +4,10 @@ import { Task } from "@/types/model";
 import { TaskItem } from "@/components/TaskItem";
 import { Pagination } from "@/components/Pagination";
 import { NoData } from "@/components/NoData";
+import { useTranslations } from "next-intl";
 
-export function TaskList({ title, tasks, page, pagination, nextPage, prevPage, isLoading, error }: any) {
+export function TaskList({ tasks, page, pagination, nextPage, prevPage, isLoading, error }: any) {
+  const t = useTranslations('TaskList')
   return (
     <div>
       {isLoading && <p className="text-center">加载中...</p>}
@@ -15,8 +17,8 @@ export function TaskList({ title, tasks, page, pagination, nextPage, prevPage, i
         {tasks.length === 0 ? (
           <NoData
             emoji="📜"
-            title="没有悬赏任务"
-            description="目前还没有人发布任务，快来第一个发布吧！"
+            title={t('noTasksTitle')}
+            description={t('noTasksDescription')}
           />
         ) : (
           tasks.map((task) => (

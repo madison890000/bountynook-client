@@ -17,7 +17,7 @@ export function ContactSection({ task, isAssignee, contactVisible, setContactVis
     <div className="mt-6">
       {contactVisible ? (
         <div className="flex items-center gap-2 bg-green-800/20 border border-green-600 px-4 py-2 rounded-lg shadow-sm">
-          📞 联系方式：{task.creator.contact}
+          📞 ：{task.creator.contact}
         </div>
       ) : (
         <button
