@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import { NextIntlClientProvider } from 'next-intl'
 import {getLocale} from 'next-intl/server';
 import { Metadata } from 'next'
+import { Analytics } from "@vercel/analytics/react"
 import './globals.css'
 
 
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Toaster position="top-center" />
           </NextIntlClientProvider>
         </ReactQueryClientProvider>
+        <Analytics />
       </body>
     </html>
   )
