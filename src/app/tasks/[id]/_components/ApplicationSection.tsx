@@ -6,6 +6,7 @@ import { applyForTask } from '@/lib/endpoints'
 import { getUserInfo } from '@/lib/auth'
 import { toast } from 'react-hot-toast'
 import { useTranslations } from "next-intl"
+import { useAutoToast } from "@/hooks/use-auto-toast";
 
 export function ApplicationSection({ taskId }: { taskId: string }) {
   const [showForm, setShowForm] = useState(false)
@@ -13,17 +14,18 @@ export function ApplicationSection({ taskId }: { taskId: string }) {
   const queryClient = useQueryClient()
   const user = getUserInfo()
   const t = useTranslations('ApplicationSection')
+  const autoToast = useAutoToast()
 
   const mutation = useMutation({
     mutationFn: (comment: string) => applyForTask(taskId, comment),
     onSuccess: () => {
-      toast.success('🎯 Application sent!', { icon: '✅' })
+      autoToast.success('applySuccess', { icon: '✅' })
       queryClient.invalidateQueries({ queryKey: ['task', taskId] })
       setShowForm(false)
       setComment('')
     },
     onError: (err: any) => {
-      toast.error(err.message || 'Failed to apply', { icon: '❌' })
+      autoToast.error('applyError', { icon: '❌' })
     },
   })
 

@@ -8,9 +8,10 @@ import { useTranslations } from "next-intl";
 
 export function TaskList({ tasks, page, pagination, nextPage, prevPage, isLoading, error }: any) {
   const t = useTranslations('TaskList')
+  const tGlobal = useTranslations('global')
   return (
     <div>
-      {isLoading && <p className="text-center">加载中...</p>}
+      {isLoading && <p className="text-center">{tGlobal('loading')}</p>}
       {error && <p className="text-center text-red-600">{(error as Error).message}</p>}
 
       <ul className="space-y-6">

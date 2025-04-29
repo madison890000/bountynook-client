@@ -5,9 +5,9 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { getUserInfo, saveUserInfo } from '@/lib/auth'
 import { apiFetch } from '@/lib/api-fetch'
-import { toast } from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 import { useTranslations } from "next-intl";
+import { useAutoToast } from "@/hooks/use-auto-toast";
 
 const schema = z.object({
   name: z.string().min(2, '姓名至少2个字符').max(20, '姓名太长了'),
@@ -31,7 +31,7 @@ export default function ProfilePage() {
       contact: user?.contact || '',
     },
   })
-
+  const autoToast = useAutoToast()
   const onSubmit = async (data: FormData) => {
     try {
       const res = await apiFetch('/user/update', {
@@ -39,11 +39,11 @@ export default function ProfilePage() {
         body: JSON.stringify(data),
       })
 
-      toast.success('保存成功！', { icon: '✅' })
+      autoToast.success('saveProfileSuccess', { icon: '✅' })
       saveUserInfo(res.user)
       router.push('/dashboard')
     } catch (err: any) {
-      toast.error(err.message || '保存失败', { icon: '❌' })
+      autoToast.error('saveProfileError', { icon: '❌' })
     }
   }
 

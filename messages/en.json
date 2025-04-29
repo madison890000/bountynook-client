@@ -1,43 +1,47 @@
 {
+  "global": {
+    "loading": "Loading, please wait..."
+  },
   "NavBar": {
     "createTask": "Post a Task",
-    "myTasks": "My Tasks",
+    "myTasks": "My Quests",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "mine": "My Profile"
   },
   "Home": {
     "welcome": "Welcome to BountyNook!",
-    "subTitle": "A cozy little place for your side quests."
+    "subTitle": "Your cozy little tavern for side quests and adventures."
   },
   "Pagination": {
-    "next": "Next",
-    "prev": "Previous"
-  },
-  "Profile": {
-    "mine": "My Profile"
+    "next": "Next Page",
+    "prev": "Previous Page"
   },
   "TaskStatus": {
-    "PENDING": "Awaiting Pickup",
-    "ASSIGNED": "In Progress",
-    "COMPLETED": "Completed"
+    "PENDING": "Awaiting Adventurer",
+    "ASSIGNED": "Quest in Progress",
+    "COMPLETED": "Quest Completed"
   },
   "TaskItem": {
     "creator": "Posted by"
   },
   "CreateTaskPage": {
-    "title": "Post a New Task",
-    "submit": "Post Now",
-    "submitting": "Posting...",
-    "taskTitlePlaceholder": "Task Title",
-    "taskContentPlaceholder": "Describe the task...",
-    "taskRewardType": "Reward Type",
+    "title": "Post a New Quest",
+    "submit": "Publish Now",
+    "submitting": "Publishing...",
+    "taskTitlePlaceholder": "Enter the quest title",
+    "taskContentPlaceholder": "Describe your quest details...",
+    "taskRewardType": "Reward Method",
     "ONLINE": "Online Payment",
-    "OFFLINE": "Offline/Negotiable",
+    "OFFLINE": "Offline / Negotiable",
     "rewardAmount": "Reward Amount",
     "currency": "Currency",
-    "USD": "USD",
-    "CNY": "CNY",
-    "rewardNote": "Notes for Reward"
+    "USD": "USD (Dollar)",
+    "CNY": "CNY (Yuan)",
+    "rewardNote": "Special reward notes",
+    "noContactSection1": "You haven't added contact information yet, ",
+    "noContactSection2": "please update your profile ",
+    "noContactSection3": "so adventurers can reach you!"
   },
   "MyProfile": {
     "title": "Edit My Profile",
@@ -47,26 +51,71 @@
     "saving": "Saving..."
   },
   "Dashboard": {
-    "created": "Posted",
-    "applied": "Applied",
-    "assigned": "Assigned to Me"
+    "created": "Quests Posted",
+    "applied": "Quests Applied",
+    "assigned": "Quests Taken"
   },
   "ApplicationList": {
     "noApplicationsTitle": "No Applications Yet",
-    "noApplicationsDescription": "You haven’t applied for any tasks yet. Time to find your next quest!"
+    "noApplicationsDescription": "You haven't applied to any quests yet. Find your next adventure!"
   },
   "TaskList": {
-    "noTasksTitle": "No Tasks Available",
-    "noTasksDescription": "No one has posted a task yet. Be the first to start an adventure!"
+    "noTasksTitle": "No Quests Yet",
+    "noTasksDescription": "No one has posted a quest yet. Be the first to start the adventure!"
   },
   "ApplicationSection": {
-    "apply": "Apply Now",
-    "submit": "Send Application",
-    "submitting": "Sending...",
+    "apply": "Apply for Quest",
+    "submit": "Submit Application",
+    "submitting": "Submitting...",
     "cancel": "Cancel",
-    "commentPlaceholder": "Write your application note..."
+    "commentPlaceholder": "Write a brief application note..."
   },
   "AssignSection": {
-    "assignTo": "Pick this!"
+    "assignTo": "Assign",
+    "applicationList": "Applicants"
+  },
+  "Toast": {
+    "applySuccess": "Applied successfully! 🚀",
+    "applyError": "Failed to apply. Try again!",
+    "assignSuccess": "Assigned successfully! 🎯",
+    "assignError": "Failed to assign.",
+    "createTaskSuccess": "Quest published! 📝",
+    "createTaskError": "Failed to publish quest.",
+    "saveProfileSuccess": "Profile updated! ✨",
+    "saveProfileError": "Failed to update profile.",
+    "loginSuccess": "Logged in! Welcome back! 🐾",
+    "loginError": "Login failed. Please try again.",
+    "registerSuccess": "Registered successfully! 🎉",
+    "registerError": "Registration failed.",
+    "loginFirst": "Please log in first to continue.",
+    "needContact": "Please add your contact info first!",
+    "onlyAssigneeCanCheckContact": "Only assigned adventurers can view contact details."
+  },
+  "ContactSection": {
+    "checkContact": "View Contact Info"
+  },
+  "TaskDetail": {
+    "alreadyApplied": "Already Applied"
+  },
+  "LoginPage": {
+    "title": "Log In to BountyNook",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "login": "Log In",
+    "loggingIn": "Logging in...",
+    "noAccount": "New to BountyNook?",
+    "registerNow": "Register now",
+    "loginFailed": "Login failed. Please check your info."
+  },
+  "RegisterPage": {
+    "title": "Register for BountyNook",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Choose a password",
+    "namePlaceholder": "Nickname (optional)",
+    "register": "Register",
+    "registering": "Registering...",
+    "haveAccount": "Already have an account?",
+    "goLogin": "Go to Login",
+    "registerFailed": "Registration failed."
   }
 }

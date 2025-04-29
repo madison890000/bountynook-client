@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
 import { getToken } from '@/lib/auth'
-import { toast } from "react-hot-toast";
+import { useAutoToast } from "@/hooks/use-auto-toast";
 
 type Props = {
   children: ReactNode
@@ -13,11 +13,12 @@ type Props = {
 
 export function AuthGuardButton({ children, onAuthClick, className }: Props) {
   const router = useRouter()
+  const autoToast = useAutoToast()
 
   const handleClick = async (e) => {
     const token = getToken()
     if (!token) {
-      toast('请先登录才能执行此操作', { icon: '🔒' })
+      autoToast.error('loginFirst', { icon: '🔒' })
       setTimeout(() => {
         router.push('/login')
       },3*1000)

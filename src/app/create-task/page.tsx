@@ -14,6 +14,7 @@ import { getUserInfo } from "@/lib/auth"
 import { ProfileLinkButton } from "@/components/ProfileLinkButton";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useAutoToast } from "@/hooks/use-auto-toast";
 
 const schema = z.object({
   title: z.string().min(3, '标题至少3个字符'),
@@ -27,7 +28,8 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export default function CreateTaskPage() {
-  const t = useTranslations('CreateTaskPage')
+  const t = useTranslations('CreateTaskPage');
+  const autoToast = useAutoToast()
   const [initialValues, setInitialValues] = useState<Partial<FormData>>({})
   const [user, setUser] = useState<any>(null)
   const {
@@ -72,17 +74,17 @@ export default function CreateTaskPage() {
       clearDraft()
       reset()
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
-      toast.success('发布成功', { icon: '✅' })
+      autoToast.success('createTaskSuccess', { icon: '✅' })
       router.push('/dashboard')
     },
     onError: (err: any) => {
-      toast.error(err.message || '发布失败', { icon: '❌' })
+      autoToast.error('createTaskError', { icon: '❌' })
     },
   })
 
   const onSubmit = (data: FormData) => {
     if (!user?.contact) {
-      toast.error('请先补充联系方式！', { icon: '📞' })
+      autoToast.error('needContact', { icon: '📞' })
       setTimeout(() => {
         router.push('/dashboard/profile')
       }, 1500)
@@ -192,7 +194,7 @@ export default function CreateTaskPage() {
         {/* 补充资料提示 */}
         {user && !user?.contact && (
           <div className="mt-6 bg-yellow-200/20 text-yellow-300 p-4 rounded border border-yellow-600 text-sm">
-            你还没有填写联系方式，<ProfileLinkButton>立即完善资料</ProfileLinkButton>，否则无法成功发布任务！
+            {t('noContactSection1')}<ProfileLinkButton>{t('noContactSection2')}</ProfileLinkButton>{t('noContactSection3')}
           </div>
         )}
       </form>

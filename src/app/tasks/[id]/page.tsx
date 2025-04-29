@@ -9,20 +9,22 @@ import { ApplicationSection } from './_components/ApplicationSection'
 import { AssignSection } from './_components/AssignSection'
 import { BasicInfoSection } from './_components/BasicInfoSection'
 import { useState } from 'react'
+import { useTranslations } from "next-intl";
 
 export default function TaskDetailPage() {
   const params = useParams()
   const taskId = params.id as string
   const currentUser = getUserInfo()
   const [contactVisible, setContactVisible] = useState(false)
-
+  const tGlobal = useTranslations('global')
+  const t = useTranslations('TaskDetail')
   const { data: task, isLoading, error } = useQuery({
     queryKey: ['task', taskId],
     queryFn: () => fetchTask(taskId),
     staleTime: 1000 * 30,
   })
 
-  if (isLoading) return <p className="text-center py-10">加载中...</p>
+  if (isLoading) return <p className="text-center py-10">{tGlobal('loading')}</p>
   if (error) return <p className="text-center py-10 text-red-600">{(error as Error).message}</p>
   if (!task) return null
 
@@ -53,7 +55,7 @@ export default function TaskDetailPage() {
       )}
       { hasAlreadyApplied && task.status ==='PENDING' && (
         <div className="text-center text-yellow-500">
-          你已经申请过了，等待审核中...
+          {t('alreadyApplied')}
         </div>
       )}
     </div>

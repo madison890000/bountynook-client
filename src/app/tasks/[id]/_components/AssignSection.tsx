@@ -4,19 +4,21 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { assignTask } from '@/lib/endpoints'
 import { toast } from 'react-hot-toast'
 import { useTranslations } from "next-intl";
+import { useAutoToast } from "@/hooks/use-auto-toast";
 
 export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
   const queryClient = useQueryClient()
 
   const t = useTranslations('AssignSection')
+  const autoToast = useAutoToast()
   const mutation = useMutation({
     mutationFn: (applicationId: string) => assignTask(taskId, applicationId),
     onSuccess: () => {
-      toast.success('✅ 成功选中执行人', { icon: '📜' })
+      autoToast.success('assignSuccess', { icon: '📜' })
       queryClient.invalidateQueries({ queryKey: ['task', taskId] })
     },
     onError: (err: any) => {
-      toast.error(err.message || '分配失败', { icon: '❌' })
+      autoToast.error('assignError', { icon: '❌' })
     },
   })
 
@@ -25,7 +27,7 @@ export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
   return (
     <div className="mt-8">
       <h3 className="text-xl font-bold mb-6 tracking-widest">
-        🧑‍💼 申请人列表
+        🧑‍💼 {t("applicationList")}
       </h3>
 
       <ul className="space-y-5">

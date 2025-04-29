@@ -1,23 +1,24 @@
 {
+  "global": {
+    "loading": "加载中，请稍等..."
+  },
   "NavBar": {
     "createTask": "发布任务",
     "myTasks": "我的任务",
     "login": "登录",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "mine": "我的资料"
   },
   "Home": {
     "welcome": "欢迎来到 BountyNook！",
-    "subTitle": "一个属于你的，轻松又温暖的小任务角落。"
+    "subTitle": "在这里，开启你的边角冒险之旅。"
   },
   "Pagination": {
     "next": "下一页",
     "prev": "上一页"
   },
-  "Profile": {
-    "mine": "我的"
-  },
   "TaskStatus": {
-    "PENDING": "待接单",
+    "PENDING": "等待接单",
     "ASSIGNED": "执行中",
     "COMPLETED": "已完成"
   },
@@ -26,25 +27,28 @@
   },
   "CreateTaskPage": {
     "title": "发布新任务",
-    "submit": "发布",
-    "submitting": "发布中",
-    "taskTitlePlaceholder": "请输入任务标题",
-    "taskContentPlaceholder": "请输入任务描述",
-    "taskRewardType": "奖励类型",
+    "submit": "立即发布",
+    "submitting": "发布中...",
+    "taskTitlePlaceholder": "填写任务标题",
+    "taskContentPlaceholder": "描述一下任务内容...",
+    "taskRewardType": "奖励方式",
     "ONLINE": "线上支付",
-    "OFFLINE": "线下支付",
+    "OFFLINE": "线下/协商",
     "rewardAmount": "奖励金额",
     "currency": "币种",
     "USD": "美元 (USD)",
     "CNY": "人民币 (CNY)",
-    "rewardNote": "奖励备注（如：面议）"
+    "rewardNote": "奖励备注",
+    "noContactSection1": "你还没有填写联系方式，",
+    "noContactSection2": "请完善资料，",
+    "noContactSection3": "否则无法成功发布任务哦！"
   },
   "MyProfile": {
     "title": "编辑我的资料",
-    "name": "姓名",
+    "name": "昵称",
     "contact": "联系方式",
-    "save": "保存",
-    "saving": "保存中"
+    "save": "保存修改",
+    "saving": "保存中..."
   },
   "Dashboard": {
     "created": "我发布的",
@@ -53,20 +57,65 @@
   },
   "ApplicationList": {
     "noApplicationsTitle": "暂无申请记录",
-    "noApplicationsDescription": "你还没有申请任何任务，快去挑战一波吧！"
+    "noApplicationsDescription": "你还没有申请任何任务，去看看有没有心动的吧！"
   },
   "TaskList": {
     "noTasksTitle": "暂无任务",
-    "noTasksDescription": "现在还没有人发布任务，快来第一个发布吧！"
+    "noTasksDescription": "还没人发布任务呢，快来当第一个发布者吧！"
   },
   "ApplicationSection": {
-    "apply": "申请接任务",
+    "apply": "申请任务",
     "submit": "提交申请",
-    "submitting": "申请中...",
+    "submitting": "提交中...",
     "cancel": "取消",
-    "commentPlaceholder": "填写你的申请说明..."
+    "commentPlaceholder": "简单写几句申请说明..."
   },
   "AssignSection": {
-    "assignTo": "选TA"
+    "assignTo": "选TA",
+    "applicationList": "申请列表"
+  },
+  "Toast": {
+    "applySuccess": "申请成功！🚀",
+    "applyError": "申请失败，请重试。",
+    "assignSuccess": "成功分配任务！🎯",
+    "assignError": "分配失败。",
+    "createTaskSuccess": "任务发布成功！📝",
+    "createTaskError": "发布失败，请稍后再试。",
+    "saveProfileSuccess": "资料保存成功！✨",
+    "saveProfileError": "资料保存失败。",
+    "loginSuccess": "登录成功！🐾",
+    "loginError": "登录失败，请检查信息。",
+    "registerSuccess": "注册成功！🎉",
+    "registerError": "注册失败。",
+    "loginFirst": "请先登录才能执行此操作。",
+    "needContact": "请先补充联系方式！",
+    "onlyAssigneeCanCheckContact": "只有接单人才能查看联系方式哦。"
+  },
+  "ContactSection": {
+    "checkContact": "查看联系方式"
+  },
+  "TaskDetail": {
+    "alreadyApplied": "已申请，等待分配"
+  },
+  "LoginPage": {
+    "title": "登录 BountyNook",
+    "emailPlaceholder": "请输入邮箱地址",
+    "passwordPlaceholder": "请输入密码",
+    "login": "立即登录",
+    "loggingIn": "登录中...",
+    "noAccount": "还没有账号？",
+    "registerNow": "立即注册",
+    "loginFailed": "登录失败，请检查信息。"
+  },
+  "RegisterPage": {
+    "title": "注册 BountyNook",
+    "emailPlaceholder": "请输入邮箱地址",
+    "passwordPlaceholder": "设置密码",
+    "namePlaceholder": "昵称（可选）",
+    "register": "立即注册",
+    "registering": "注册中...",
+    "haveAccount": "已有账号？",
+    "goLogin": "去登录",
+    "registerFailed": "注册失败，请重试。"
   }
 }

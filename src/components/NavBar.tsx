@@ -60,7 +60,9 @@ export function NavBar() {
       {/* 登录区块 */}
       <div className="flex items-center space-x-4 text-yellow-200">
         {loggedIn ? (
-          <ProfileLinkButton />
+          <ProfileLinkButton>
+            {t('mine')}
+          </ProfileLinkButton>
         ) : (
           <Link href="/login" className="hover:text-yellow-300 transition-colors text-sm font-semibold">
             {t('login')}

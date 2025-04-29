@@ -7,9 +7,10 @@ import { useTranslations } from "next-intl";
 
 export function ApplicationList({ applications, page, pagination, nextPage, prevPage, isLoading, error, goToDetail }: any) {
   const t = useTranslations('ApplicationList')
+  const tGlobal = useTranslations('global')
   return (
     <div>
-      {isLoading && <p className="text-center">加载中...</p>}
+      {isLoading && <p className="text-center">{tGlobal('loading')}</p>}
       {error && <p className="text-center text-red-600">{(error as Error).message}</p>}
 
       <ul className="space-y-6">
@@ -21,7 +22,7 @@ export function ApplicationList({ applications, page, pagination, nextPage, prev
           />
         ) : (
           applications.map((app) => (
-            <TaskItem key={app.id} task={app.task} />
+            <TaskItem key={app.task.id} task={app.task} />
           ))
         )}
       </ul>

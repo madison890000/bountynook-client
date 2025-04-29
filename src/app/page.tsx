@@ -6,6 +6,7 @@ import { Task } from "@/types/model";
 import { TaskItem } from "@/components/TaskItem";
 import { Pagination } from "@/components/Pagination";
 import { EmptyTaskList } from "@/components/EmptyTaskList";
+import { useTranslations } from "next-intl";
 
 export default function TaskListPage() {
   const {
@@ -22,11 +23,11 @@ export default function TaskListPage() {
     initialPage: 1,
     pageSize: 10,
   })
-
+  const t = useTranslations('global')
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
 
-      {isLoading && <p className="text-center">加载中...</p>}
+      {isLoading && <p className="text-center">{t('loading')}</p>}
       {error && <p className="text-red-600 text-center">{(error as Error).message}</p>}
 
 
