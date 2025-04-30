@@ -1,6 +1,7 @@
 import { apiFetch } from "@/lib/api-fetch";
 import { saveToken, saveUserInfo } from "@/lib/auth";
 import { Task, User } from "@/types/model";
+import { getLang } from "@/lib/get-lang";
 
 // --- 具体 API 方法 ---
 // 用户登录
@@ -39,7 +40,8 @@ export async function fetchTask(id: string): Promise<Task> {
 
 // 获取任务列表，支持分页
 export async function fetchTasks({ page = 1, pageSize = 10 }: { page?: number, pageSize?: number }) {
-  const res = await apiFetch(`/tasks/list?page=${page}&pageSize=${pageSize}`)
+  const lang = getLang();
+  const res = await apiFetch(`/tasks/list?page=${page}&pageSize=${pageSize}&lang=${lang}`)
   return res
 }
 
