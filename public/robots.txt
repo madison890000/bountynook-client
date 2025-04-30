@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /tasks
+Disallow: /login
+Disallow: /register
+Disallow: /my
+Disallow: /create-task
+
+# Host
+Host: https://bountynook.com
+
+# Sitemaps
+Sitemap: https://bountynook.com/sitemap.xml
