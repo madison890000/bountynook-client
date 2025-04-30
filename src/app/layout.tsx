@@ -12,35 +12,39 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'BountyNook - Cozy Quest Hub',
+    default: 'BountyNook - Your Cozy Quest Hub',
     template: '%s | BountyNook'
   },
-  description: 'Pick side quests, earn rewards, and join our bounty community!',
-  keywords: ['bounty', 'quests', 'freelance', 'earn money', 'BountyNook', 'side hustle'],
+  description: 'BountyNook is a community-driven micro-task platform where you can post or pick real-world side quests — from house viewing to renovation supervision.',
+  keywords: [
+    'bounty', 'side quests', 'microtasks', 'real-world help', 'earn money', 'freelance missions',
+    '看房任务', '代办', '异地帮忙', '装修监工', '实地验证', '本地帮手', '跑腿平台', 'BountyNook'
+  ],
   openGraph: {
-    title: 'BountyNook - Cozy Quest Hub',
-    description: 'Join BountyNook to discover side quests and rewards!',
+    title: 'BountyNook - Real-life Help Meets Fun',
+    description: 'Post real-world tasks and get help from verified local users. BountyNook connects people for unique, location-based missions.',
     url: 'https://bountynook.com',
     siteName: 'BountyNook',
     images: [
       {
-        url: '/og-image.png', // 记得自己加一张
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'BountyNook Logo'
+        alt: 'BountyNook - Cozy Quest Platform'
       }
     ],
-    locale: 'en_US',
+    locale: 'zh_CN',
     type: 'website'
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BountyNook - Side Quests Await!',
-    description: 'Pick quests, earn rewards, and enjoy the journey.',
+    title: 'Need Help with Offline Tasks? Try BountyNook!',
+    description: 'Post a task. Earn a reward. Help or be helped — across cities.',
     images: ['/og-image.png']
   },
   metadataBase: new URL('https://bountynook.com')
 }
+
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();

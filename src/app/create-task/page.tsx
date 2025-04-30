@@ -9,12 +9,12 @@ import { createTask } from "@/lib/endpoints";
 import { AuthGuardButton } from "@/components/AuthGuardButton";
 import { useEffect, useState } from "react";
 import { clearDraft, loadDraft, saveDraft } from "@/lib/draft";
-import { toast } from "react-hot-toast";
 import { getUserInfo } from "@/lib/auth"
 import { ProfileLinkButton } from "@/components/ProfileLinkButton";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useAutoToast } from "@/hooks/use-auto-toast";
+import { Task } from "@/types/model";
 
 const schema = z.object({
   title: z.string().min(3, '标题至少3个字符'),
@@ -61,6 +61,7 @@ export default function CreateTaskPage() {
   }, [])
 
   useEffect(() => {
+    console.log('watchedValues', watchedValues)
     if (!watchedValues.title && !watchedValues.description && !watchedValues.rewardType) {
       clearDraft()
       return
@@ -70,12 +71,20 @@ export default function CreateTaskPage() {
 
   const mutation = useMutation({
     mutationFn: async (data: FormData) => createTask(data),
-    onSuccess: () => {
-      clearDraft()
-      reset()
+    onSuccess: ({task}:{task:Task}) => {
+      reset({
+        title: '',
+        description: '',
+        rewardType: '',
+        amount: undefined,
+        currency: undefined,
+        rewardNote: '',
+      })
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
       autoToast.success('createTaskSuccess', { icon: '✅' })
-      router.push('/dashboard')
+      setTimeout(() => {
+        router.push(`/tasks/${task.id}`)
+      },  1500);
     },
     onError: (err: any) => {
       autoToast.error('createTaskError', { icon: '❌' })
@@ -86,7 +95,7 @@ export default function CreateTaskPage() {
     if (!user?.contact) {
       autoToast.error('needContact', { icon: '📞' })
       setTimeout(() => {
-        router.push('/dashboard/profile')
+        router.push('/my/profile')
       }, 1500)
       return
     }
@@ -128,7 +137,7 @@ export default function CreateTaskPage() {
             className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
           >
             <option value="">{t('taskRewardType')}</option>
-            <option value="ONLINE">{t('ONLINE')}</option>
+            <option disabled value="ONLINE">{t('ONLINE')}</option>
             <option value="OFFLINE">{t('OFFLINE')}</option>
           </select>
           {errors.rewardType && <p className="text-red-400 text-xs mt-1">{errors.rewardType.message}</p>}
@@ -193,7 +202,7 @@ export default function CreateTaskPage() {
 
         {/* 补充资料提示 */}
         {user && !user?.contact && (
-          <div className="mt-6 bg-yellow-200/20 text-yellow-300 p-4 rounded border border-yellow-600 text-sm">
+          <div className="mt-6 text-center bg-yellow-200/20 text-yellow-300 p-4 rounded border border-yellow-600 text-sm">
             {t('noContactSection1')}<ProfileLinkButton>{t('noContactSection2')}</ProfileLinkButton>{t('noContactSection3')}
           </div>
         )}

@@ -46,7 +46,8 @@ export function ApplicationSection({ taskId }: { taskId: string }) {
       {!showForm ? (
         <button
           onClick={() => setShowForm(true)}
-          className="w-full py-3 rounded-lg bg-green-600 hover:bg-green-500 text-white font-bold text-lg transition-all shadow-md"
+          className="w-full py-3 rounded-lg bg-gradient-to-br from-[#caa76d] to-[#9a7743] text-[#1e1d1a] font-bold text-lg shadow-md hover:brightness-110 transition-all"
+
         >
           {t('apply')}
         </button>
@@ -64,7 +65,7 @@ export function ApplicationSection({ taskId }: { taskId: string }) {
             <button
               onClick={handleApply}
               disabled={mutation.isPending}
-              className="flex-1 py-3 rounded-lg bg-primary hover:bg-indigo-600 text-white font-semibold transition-all shadow-md disabled:opacity-50"
+              className="flex-1 py-3 rounded-lg bg-gradient-to-br from-[#caa76d] to-[#9a7743] text-[#1e1d1a] font-bold transition-all shadow-md hover:brightness-110 disabled:opacity-50"
             >
               {mutation.isPending ? t('submitting') : t('submit')}
             </button>
@@ -74,7 +75,7 @@ export function ApplicationSection({ taskId }: { taskId: string }) {
                 setShowForm(false)
                 setComment('')
               }}
-              className="flex-1 py-3 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold transition-all shadow-md"
+              className="flex-1 py-3 rounded-lg bg-[#44403c] text-[#d6d3c9] font-medium hover:bg-[#5a544f] transition-all shadow-sm"
             >
               {t('cancel')}
             </button>

@@ -2,7 +2,52 @@
   "global": {
     "loading": "加载中，请稍等..."
   },
+  "Landing": {
+    "hero": {
+      "title": "欢迎来到 BountyNook",
+      "subtitle": "一个温馨的接单小屋，开启你的副业冒险。",
+      "join": "立即加入",
+      "browse": "浏览任务"
+    },
+    "features": {
+      "post": {
+        "title": "发布任务",
+        "desc": "有事情想找人帮忙？发个赏金吧！"
+      },
+      "pick": {
+        "title": "接任务赚钱",
+        "desc": "挑选感兴趣的任务，申请接单，赚取赏金！"
+      },
+      "i18n": {
+        "title": "多语言支持",
+        "desc": "已支持中英语言，更多语言正在路上！"
+      }
+    },
+    "scene": {
+      "title": "主流平台帮不到的，BountyNook可以！",
+      "p1": "你是否曾经想在线下找人帮你看房，但因为不在本地难以实现？",
+      "p2": "你是否希望有人帮你盯一下装修进度，独立客观又不贵？",
+      "p3": "在BountyNook发布一个小任务，立刻有人愿意帮你跑一趟，快速又省心！"
+    },
+    "footer": "由一只猫和一位创作者联手打造 🐈‍⬛"
+  },
+  "UseCases": {
+    "title": "你可能遇到这些场景...",
+    "lookHouse": "异地帮看房",
+    "lookHouseDesc": "你不在本地？发布任务找人帮你实地看房、拍照、打探消息。",
+    "superviseRenovation": "装修监工",
+    "superviseRenovationDesc": "不放心装修进度？请本地人帮你拍视频、记录施工。",
+    "verifyShop": "商铺真实性核查",
+    "verifyShopDesc": "确认商铺是否真实存在？交给客观第三方验证。",
+    "takePhotos": "线下拍照取证",
+    "takePhotosDesc": "需要照片视频支持？找人帮你到现场拍摄。",
+    "checkQueue": "代查排队情况",
+    "checkQueueDesc": "想知道排队有多长？随时让人去帮你实地查看。",
+    "surveyFlyers": "问卷调研 / 贴海报",
+    "surveyFlyersDesc": "本地宣传、调研任务交给在地用户处理更高效。"
+  },
   "NavBar": {
+    "taskList": "大厅",
     "createTask": "发布任务",
     "myTasks": "我的任务",
     "login": "登录",
@@ -40,8 +85,8 @@
     "CNY": "人民币 (CNY)",
     "rewardNote": "奖励备注",
     "noContactSection1": "你还没有填写联系方式，",
-    "noContactSection2": "请完善资料，",
-    "noContactSection3": "否则无法成功发布任务哦！"
+    "noContactSection2": "请完善资料",
+    "noContactSection3": " 否则无法成功发布任务哦！"
   },
   "MyProfile": {
     "title": "编辑我的资料",
@@ -51,9 +96,9 @@
     "saving": "保存中..."
   },
   "Dashboard": {
-    "created": "我发布的",
-    "applied": "我申请的",
-    "assigned": "我执行的"
+    "created": "创建的",
+    "applied": "申请中",
+    "assigned": "执行中"
   },
   "ApplicationList": {
     "noApplicationsTitle": "暂无申请记录",

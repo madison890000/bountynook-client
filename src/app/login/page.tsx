@@ -33,7 +33,7 @@ export default function LoginPage() {
   const onSubmit = async (data: FormData) => {
     try {
       await login(data)
-      router.push('/dashboard')
+      router.push('/my')
     } catch (err: any) {
       setError(err.message || t('loginFailed'))
     }

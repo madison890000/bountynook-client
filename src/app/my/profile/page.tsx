@@ -41,7 +41,7 @@ export default function ProfilePage() {
 
       autoToast.success('saveProfileSuccess', { icon: '✅' })
       saveUserInfo(res.user)
-      router.push('/dashboard')
+      router.push('/my')
     } catch (err: any) {
       autoToast.error('saveProfileError', { icon: '❌' })
     }

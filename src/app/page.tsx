@@ -1,49 +1,80 @@
 'use client'
 
-import { fetchTasks } from "@/lib/endpoints";
-import { usePaginationQuery } from "@/hooks/use-pagination-query";
-import { Task } from "@/types/model";
-import { TaskItem } from "@/components/TaskItem";
-import { Pagination } from "@/components/Pagination";
-import { EmptyTaskList } from "@/components/EmptyTaskList";
-import { useTranslations } from "next-intl";
+import Link from 'next/link'
+import Image from 'next/image'
+import { useTranslations } from 'next-intl'
+import { UseCaseSection } from "@/components/UserCaseSection";
 
-export default function TaskListPage() {
-  const {
-    data: tasks,
-    page,
-    pagination,
-    nextPage,
-    prevPage,
-    isLoading,
-    error,
-  } = usePaginationQuery({
-    queryKey: 'tasks',
-    queryFn: fetchTasks,
-    initialPage: 1,
-    pageSize: 10,
-  })
-  const t = useTranslations('global')
+export default function LandingPage() {
+  const t = useTranslations('Landing')
+
+  const features = [
+    {
+      icon: '🪙',
+      title: t('features.post.title'),
+      desc: t('features.post.desc'),
+    },
+    {
+      icon: '🧭',
+      title: t('features.pick.title'),
+      desc: t('features.pick.desc'),
+    },
+    {
+      icon: '🌍',
+      title: t('features.i18n.title'),
+      desc: t('features.i18n.desc'),
+    },
+  ]
+
   return (
-    <div className="max-w-3xl mx-auto py-10 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#1c1b18] to-[#2d2c28] text-[#e7e3d5] px-6 py-12">
+      {/* Hero Section */}
+      <section className="text-center max-w-2xl mx-auto">
+        <Image
+          src="/logo.png"
+          alt="BountyNook Logo"
+          width={100}
+          height={100}
+          className="mx-auto mb-4"
+        />
+        <h1 className="text-4xl font-extrabold tracking-widest text-yellow-100 mb-3">
+          {t('hero.title')}
+        </h1>
+        <p className="text-lg text-[#bcb8ab]">{t('hero.subtitle')}</p>
+        <div className="mt-6 flex justify-center gap-4">
+          <Link
+            href="/register"
+            className="px-6 py-3 rounded-lg bg-gradient-to-br from-[#caa76d] to-[#9a7743] text-[#1e1d1a] font-bold hover:brightness-110 shadow-md"
+          >
+            🐾 {t('hero.join')}
+          </Link>
+          <Link
+            href="/tasks"
+            className="px-6 py-3 rounded-lg border border-[#8c7853] text-yellow-200 hover:bg-[#2f2d29] transition"
+          >
+            🔍 {t('hero.browse')}
+          </Link>
+        </div>
+      </section>
 
-      {isLoading && <p className="text-center">{t('loading')}</p>}
-      {error && <p className="text-red-600 text-center">{(error as Error).message}</p>}
+      <UseCaseSection />
+
+      {/* Features Section */}
+      <section className="mt-20 max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center">
+        {features.map((f, idx) => (
+          <div key={idx} className="bg-[#252421] border border-[#8c7853] rounded-xl p-6 shadow-sm">
+            <div className="text-3xl mb-3">{f.icon}</div>
+            <h3 className="text-xl font-bold text-yellow-100">{f.title}</h3>
+            <p className="text-sm text-[#b8b6a9] mt-2">{f.desc}</p>
+          </div>
+        ))}
+      </section>
 
 
-      <ul className="space-y-6">
-        {tasks.length === 0 ? (
-          <EmptyTaskList />
-        ) : (
-          <ul className="space-y-6">
-            {tasks.map((task: Task) => (<TaskItem key={task.id} task={task} />))}
-          </ul>
-        )}
-      </ul>
-
-      {pagination && (
-        <Pagination onNext={nextPage} onPrev={prevPage} page={page} totalPages={pagination.totalPages} />
-      )}
+      {/* Footer */}
+      <footer className="mt-20 text-center text-sm text-[#66635a]">
+        &copy; {new Date().getFullYear()} BountyNook · {t('footer')}
+      </footer>
     </div>
   )
 }

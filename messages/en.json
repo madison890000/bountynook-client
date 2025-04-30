@@ -2,7 +2,52 @@
   "global": {
     "loading": "Loading, please wait..."
   },
+  "Landing": {
+    "hero": {
+      "title": "Welcome to BountyNook",
+      "subtitle": "A cozy little guild for your side quests.",
+      "join": "Join Now",
+      "browse": "Browse Tasks"
+    },
+    "features": {
+      "post": {
+        "title": "Post a Task",
+        "desc": "Got a task? Publish a bounty and attract brave doers."
+      },
+      "pick": {
+        "title": "Pick Up Bounties",
+        "desc": "Browse tasks, apply with a comment, and earn coins!"
+      },
+      "i18n": {
+        "title": "Multilingual Ready",
+        "desc": "Support for English & Chinese — more coming soon."
+      }
+    },
+    "scene": {
+      "title": "When Big Platforms Can't Help, BountyNook Can",
+      "p1": "Need someone to visit a rental on your behalf in another city?",
+      "p2": "Worried about your home renovation and want an independent check-in?",
+      "p3": "Post a small, quick task and let a neutral third party help you get things done — faster and cheaper!"
+    },
+    "footer": "Built by a dreamer with a cat and a keyboard 🐈‍⬛"
+  },
+  "UseCases": {
+    "title": "Real-life scenarios BountyNook helps with",
+    "lookHouse": "House Viewing from Afar",
+    "lookHouseDesc": "Can't visit in person? Get someone local to check out the property for you.",
+    "superviseRenovation": "Renovation Supervision",
+    "superviseRenovationDesc": "Concerned about your renovation? Let someone verify progress with photos and videos.",
+    "verifyShop": "Verify Shop or Business",
+    "verifyShopDesc": "Make sure a business actually exists before you trust it.",
+    "takePhotos": "On-site Photo or Video Capture",
+    "takePhotosDesc": "Need pictures of a place, item, or scene? Post a task for it.",
+    "checkQueue": "Queue & Crowd Check",
+    "checkQueueDesc": "Want to know how busy a place is? Ask someone nearby to report.",
+    "surveyFlyers": "Distribute Surveys or Flyers",
+    "surveyFlyersDesc": "Need to collect data or promote locally? Get help on the ground."
+  },
   "NavBar": {
+    "taskList": "Nook",
     "createTask": "Post a Task",
     "myTasks": "My Quests",
     "login": "Login",
@@ -41,7 +86,7 @@
     "rewardNote": "Special reward notes",
     "noContactSection1": "You haven't added contact information yet, ",
     "noContactSection2": "please update your profile ",
-    "noContactSection3": "so adventurers can reach you!"
+    "noContactSection3": " so adventurers can reach you!"
   },
   "MyProfile": {
     "title": "Edit My Profile",

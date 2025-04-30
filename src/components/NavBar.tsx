@@ -25,10 +25,6 @@ export function NavBar() {
     router.push('/login')
   }
 
-  const changeLocale = (locale: string) => {
-    const pathWithoutLocale = pathname.replace(/^\/(en|zh-CN)/, '')
-    router.push(`/${locale}${pathWithoutLocale}`)
-  }
 
   return (
     <nav className="flex justify-between items-center py-3 px-6 bg-gradient-to-br from-[#1f1e1b] to-[#2c2a28] border-b-2 border-yellow-700 shadow-md">
@@ -46,13 +42,17 @@ export function NavBar() {
 
       {/* 链接区域 */}
       <div className="flex items-center space-x-6 text-yellow-200 text-sm font-semibold">
+        <Link href="/tasks" className="hover:text-yellow-300 transition-colors">
+          {t('taskList')}
+        </Link>
+
         <Link href="/create-task" className="hover:text-yellow-300 transition-colors">
-          📜 {t('createTask')}
+          {t('createTask')}
         </Link>
 
         {loggedIn && (
-          <Link href="/dashboard" className="hover:text-yellow-300 transition-colors">
-            🧭 {t('myTasks')}
+          <Link href="/my" className="hover:text-yellow-300 transition-colors">
+            {t('myTasks')}
           </Link>
         )}
       </div>

@@ -6,24 +6,21 @@ import { Task } from "@/types/model";
 
 export function BasicInfoSection({ task }: { task: Task }) {
   return (
-    <div className="space-y-4 bg-gradient-to-br from-[#1c1b18] to-[#2d2c28] p-6 rounded-xl border border-[#8c7853] shadow-md">
+    <div
+      className="space-y-4 bg-gradient-to-br from-[#2a2420] to-[#3b332c] p-6 rounded-xl border border-[#a38d6d] shadow-md">
 
-      {/* 标题 */}
-      <h1 className="text-3xl font-extrabold text-yellow-50 tracking-wide decoration-yellow-400">
+      <h1 className="text-2xl md:text-3xl font-extrabold text-[#f2e6c5] tracking-wide">
         📜 {task.title}
       </h1>
 
-      {/* 描述 */}
-      <p className="text-[#d6d3c9] leading-relaxed text-sm">
+      <p className="text-[#d7cbb2] leading-relaxed text-sm md:text-base">
         {task.description}
       </p>
 
-      {/* 信息栏 */}
-      <div className="space-y-2 text-sm text-[#b8b6a9] mt-4">
+      <div className="space-y-2 text-sm text-[#cbb892] mt-4">
 
-        {/* 奖励 */}
         <div className="flex items-center gap-2">
-          💰 ：
+          💰：
           <RewardBadge
             rewardType={task.rewardType}
             rewardNote={task.rewardNote}
@@ -32,18 +29,15 @@ export function BasicInfoSection({ task }: { task: Task }) {
           />
         </div>
 
-        {/* 状态 */}
         <div className="flex items-center gap-2">
-          📌 ：
+          📌：
           <TaskStatusBadge status={task.status} />
         </div>
 
-        {/* 发布者 */}
-        <p>🧑 ：{task.creator.name || 'Momo'}</p>
+        <p>🧑：{task.creator.name || 'Momo'}</p>
 
-        {/* 执行人 */}
         {task.assignee && (
-          <p>🤝 ：{task.assignee.name || 'Momo'}</p>
+          <p>🤝：{task.assignee.name || 'Momo'}</p>
         )}
       </div>
     </div>

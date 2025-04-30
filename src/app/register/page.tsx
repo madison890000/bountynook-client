@@ -34,7 +34,7 @@ export default function RegisterPage() {
   const onSubmit = async (data: FormData) => {
     try {
       await signUp(data)
-      router.push('/dashboard')
+      router.push('/my')
     } catch (err: any) {
       setError(err.message || t('registerFailed'))
     }
@@ -87,7 +87,7 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-green-700 hover:bg-green-600 text-black font-bold py-3 rounded transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+          className="w-full bg-gradient-to-br from-[#caa76d] to-[#9a7743] text-[#1e1d1a] font-bold py-3 rounded-lg shadow-md hover:brightness-110 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
         >
           <Image
             src="/cat.png" // ✅ 你可以换成你可爱的小猫注册图标
