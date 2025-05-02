@@ -1,6 +1,6 @@
 # *
 User-agent: *
-Allow: /tasks
+Allow: /
 Disallow: /login
 Disallow: /register
 Disallow: /my
