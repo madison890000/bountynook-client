@@ -83,10 +83,7 @@
     "currency": "币种",
     "USD": "美元 (USD)",
     "CNY": "人民币 (CNY)",
-    "rewardNote": "奖励备注",
-    "noContactSection1": "你还没有填写联系方式，",
-    "noContactSection2": "请完善资料",
-    "noContactSection3": " 否则无法成功发布任务哦！"
+    "rewardNote": "奖励备注"
   },
   "MyProfile": {
     "title": "编辑我的资料",
@@ -117,7 +114,10 @@
   },
   "AssignSection": {
     "assignTo": "选TA",
-    "applicationList": "申请列表"
+    "applicationList": "申请列表",
+    "noContactSection1": "你还没有填写联系方式，",
+    "noContactSection2": "请完善资料",
+    "noContactSection3": " 否则无法成功发布任务哦！"
   },
   "Toast": {
     "applySuccess": "申请成功！🚀",
@@ -140,7 +140,8 @@
     "checkContact": "查看联系方式"
   },
   "TaskDetail": {
-    "alreadyApplied": "已申请，等待分配"
+    "alreadyApplied": "已申请，等待分配",
+    "appliedCountLabel": "人已申请"
   },
   "LoginPage": {
     "title": "登录 BountyNook",

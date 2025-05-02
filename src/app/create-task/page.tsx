@@ -6,11 +6,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createTask } from "@/lib/endpoints";
-import { AuthGuardButton } from "@/components/AuthGuardButton";
 import { useEffect, useState } from "react";
 import { clearDraft, loadDraft, saveDraft } from "@/lib/draft";
-import { getUserInfo } from "@/lib/auth"
-import { ProfileLinkButton } from "@/components/ProfileLinkButton";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useAutoToast } from "@/hooks/use-auto-toast";
@@ -31,7 +28,8 @@ export default function CreateTaskPage() {
   const t = useTranslations('CreateTaskPage');
   const autoToast = useAutoToast()
   const [initialValues, setInitialValues] = useState<Partial<FormData>>({})
-  const [user, setUser] = useState<any>(null)
+
+
   const {
     register,
     handleSubmit,
@@ -56,11 +54,6 @@ export default function CreateTaskPage() {
   }, [reset])
 
   useEffect(() => {
-    const info = getUserInfo()
-    setUser(info)
-  }, [])
-
-  useEffect(() => {
     console.log('watchedValues', watchedValues)
     if (!watchedValues.title && !watchedValues.description && !watchedValues.rewardType) {
       clearDraft()
@@ -75,7 +68,7 @@ export default function CreateTaskPage() {
       reset({
         title: '',
         description: '',
-        rewardType: '',
+        rewardType: 'OFFLINE',
         amount: undefined,
         currency: undefined,
         rewardNote: '',
@@ -92,13 +85,6 @@ export default function CreateTaskPage() {
   })
 
   const onSubmit = (data: FormData) => {
-    if (!user?.contact) {
-      autoToast.error('needContact', { icon: '📞' })
-      setTimeout(() => {
-        router.push('/my/profile')
-      }, 1500)
-      return
-    }
     mutation.mutate(data)
   }
 
@@ -130,44 +116,45 @@ export default function CreateTaskPage() {
           {errors.description && <p className="text-red-400 text-xs mt-1">{errors.description.message}</p>}
         </div>
 
-        {/* 奖励类型 */}
-        <div>
-          <select
-            {...register('rewardType')}
-            className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
+        {/* 奖励类型（按钮组样式的单选） */}
+        <div className="flex gap-3">
+          {/* ONLINE - 禁用 */}
+          <label
+            className={`flex-1 text-center p-3 rounded border transition-all
+      ${watchedValues.rewardType === 'ONLINE'
+              ? 'bg-gray-500 text-black border-gray-500'
+              : 'bg-[#2a2926] text-yellow-50 border-yellow-700'}
+      opacity-50 cursor-not-allowed`}
           >
-            <option value="">{t('taskRewardType')}</option>
-            <option disabled value="ONLINE">{t('ONLINE')}</option>
-            <option value="OFFLINE">{t('OFFLINE')}</option>
-          </select>
-          {errors.rewardType && <p className="text-red-400 text-xs mt-1">{errors.rewardType.message}</p>}
+            <input
+              {...register('rewardType')}
+              type="radio"
+              value="ONLINE"
+              className="sr-only"
+              disabled
+            />
+            {t('ONLINE')}
+          </label>
+
+          {/* OFFLINE - 可选 */}
+          <label
+            className={`flex-1 text-center p-3 rounded border cursor-pointer transition-all
+      ${watchedValues.rewardType === 'OFFLINE'
+              ? 'bg-yellow-500 text-black border-yellow-500'
+              : 'bg-[#2a2926] text-yellow-50 border-yellow-700'}`}
+          >
+            <input
+              {...register('rewardType')}
+              type="radio"
+              value="OFFLINE"
+              className="sr-only"
+            />
+            {t('OFFLINE')}
+          </label>
         </div>
 
-        {/* 金额和币种 */}
-        {watchedValues.rewardType === 'ONLINE' && (
-          <>
-            <div>
-              <input
-                {...register('amount')}
-                type="number"
-                placeholder={t('rewardAmount')}
-                className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
-              />
-              {errors.amount && <p className="text-red-400 text-xs mt-1">{errors.amount.message}</p>}
-            </div>
-
-            <div>
-              <select
-                {...register('currency')}
-                className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
-              >
-                <option value="">{t('currency')}</option>
-                <option value="USD">{t('USD')}</option>
-                <option value="CNY">{t('CNY')}</option>
-              </select>
-              {errors.currency && <p className="text-red-400 text-xs mt-1">{errors.currency.message}</p>}
-            </div>
-          </>
+        {errors.rewardType && (
+          <p className="text-red-400 text-xs mt-1">{errors.rewardType.message}</p>
         )}
 
         {/* 线下奖励备注 */}
@@ -183,29 +170,21 @@ export default function CreateTaskPage() {
         )}
 
         {/* 发布按钮 */}
-        <AuthGuardButton>
-          <button
-            type="submit"
-            disabled={mutation.isPending}
-            className="w-full bg-yellow-700 hover:bg-yellow-600 text-black font-bold py-3 rounded transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-          >
-            <Image
-              src="/cat.png"
-              alt="cat"
-              width={34}
-              height={34}
-              className="inline-block"
-            />
-            {mutation.isPending ? t('submitting') : t('submit')}
-          </button>
-        </AuthGuardButton>
+        <button
+          type="submit"
+          disabled={mutation.isPending}
+          className="w-full bg-yellow-700 hover:bg-yellow-600 text-black font-bold py-3 rounded transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+        >
+          <Image
+            src="/cat.png"
+            alt="cat"
+            width={34}
+            height={34}
+            className="inline-block"
+          />
+          {mutation.isPending ? t('submitting') : t('submit')}
+        </button>
 
-        {/* 补充资料提示 */}
-        {user && !user?.contact && (
-          <div className="mt-6 text-center bg-yellow-200/20 text-yellow-300 p-4 rounded border border-yellow-600 text-sm">
-            {t('noContactSection1')}<ProfileLinkButton>{t('noContactSection2')}</ProfileLinkButton>{t('noContactSection3')}
-          </div>
-        )}
       </form>
     </div>
   )

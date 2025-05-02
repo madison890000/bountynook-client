@@ -2,13 +2,23 @@
 
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { assignTask } from '@/lib/endpoints'
-import { toast } from 'react-hot-toast'
 import { useTranslations } from "next-intl";
 import { useAutoToast } from "@/hooks/use-auto-toast";
+import { ProfileLinkButton } from "@/components/ProfileLinkButton";
+import { useEffect, useState } from "react";
+import { getUserInfo } from "@/lib/auth";
+import { useRouter } from "next/navigation";
+import { AuthGuardButton } from "@/components/AuthGuardButton";
 
 export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
   const queryClient = useQueryClient()
+  const [user, setUser] = useState<any>(null)
 
+  useEffect(() => {
+    const info = getUserInfo()
+    setUser(info)
+  }, [])
+  const router = useRouter()
   const t = useTranslations('AssignSection')
   const autoToast = useAutoToast()
   const mutation = useMutation({
@@ -40,17 +50,33 @@ export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
               <p className="font-bold text-yellow-200">{app.user.name || app.user.email}</p>
               <p className="text-yellow-50 text-sm">{app.comment}</p>
             </div>
-
-            <button
-              onClick={() => mutation.mutate(app.id)}
-              disabled={mutation.isPending}
-              className="px-6 py-3 rounded-lg font-bold tracking-wide text-yellow-100 border border-yellow-600 bg-gradient-to-br from-yellow-700 via-yellow-600 to-yellow-700 shadow-md hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {mutation.isPending ? '📜 分配中...' : `🏹 ${t('assignTo')}`}
-            </button>
+            <AuthGuardButton>
+              <button
+                onClick={() =>{
+                  if (!user?.contact) {
+                    autoToast.error('needContact', { icon: '📞' })
+                    setTimeout(() => {
+                      router.push('/my/profile')
+                    }, 1500)
+                    return
+                  }
+                  mutation.mutate(app.id)
+                }}
+                disabled={mutation.isPending}
+                className="px-6 py-3 rounded-lg font-bold tracking-wide text-yellow-100 border border-yellow-600 bg-gradient-to-br from-yellow-700 via-yellow-600 to-yellow-700 shadow-md hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {mutation.isPending ? '📜 分配中...' : `🏹 ${t('assignTo')}`}
+              </button>
+            </AuthGuardButton>
           </li>
         ))}
       </ul>
+      {/* 补充资料提示 */}
+      {user && !user?.contact && (
+        <div className="mt-6 text-center bg-yellow-200/20 text-yellow-300 p-4 rounded border border-yellow-600 text-sm">
+          {t('noContactSection1')}<ProfileLinkButton>{t('noContactSection2')}</ProfileLinkButton>{t('noContactSection3')}
+        </div>
+      )}
     </div>
   )
 }

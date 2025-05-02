@@ -83,10 +83,7 @@
     "currency": "Currency",
     "USD": "USD (Dollar)",
     "CNY": "CNY (Yuan)",
-    "rewardNote": "Special reward notes",
-    "noContactSection1": "You haven't added contact information yet, ",
-    "noContactSection2": "please update your profile ",
-    "noContactSection3": " so adventurers can reach you!"
+    "rewardNote": "Special reward notes"
   },
   "MyProfile": {
     "title": "Edit My Profile",
@@ -117,7 +114,10 @@
   },
   "AssignSection": {
     "assignTo": "Assign",
-    "applicationList": "Applicants"
+    "applicationList": "Applicants",
+    "noContactSection1": "You haven't added contact information yet, ",
+    "noContactSection2": "please update your profile ",
+    "noContactSection3": " so adventurers can reach you!"
   },
   "Toast": {
     "applySuccess": "Applied successfully! 🚀",
@@ -140,7 +140,8 @@
     "checkContact": "View Contact Info"
   },
   "TaskDetail": {
-    "alreadyApplied": "Already Applied"
+    "alreadyApplied": "Already Applied",
+    "appliedCountLabel": "Applicants"
   },
   "LoginPage": {
     "title": "Log In to BountyNook",
