@@ -72,8 +72,32 @@ export default function LandingPage() {
 
 
       {/* Footer */}
-      <footer className="mt-20 text-center text-sm text-[#66635a]">
-        &copy; {new Date().getFullYear()} BountyNook · {t('footer')}
+      <footer className="mt-20 text-center text-sm text-[#66635a] space-y-2">
+        <div>
+          &copy; {new Date().getFullYear()} BountyNook · {t('footer')}
+        </div>
+        <div className="space-x-4">
+          <a
+            href="https://github.com/madison890000/bountynook-client"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-yellow-500 transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
+        <div className="text-xs text-[#5e5b52]">
+          Made by an indie developer. Also built&nbsp;
+          <a
+            href="https://chromewebstore.google.com/detail/keep-teams-online/pbbdmfajhenpandbgeanadmmkonjkaja"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-yellow-500 transition-colors"
+          >
+            this Chrome extension
+          </a>
+          .
+        </div>
       </footer>
     </div>
   )

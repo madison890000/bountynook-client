@@ -64,6 +64,29 @@ npm run dev
 -	💻 GitHub Repo: https://github.com/madison890000/bountynook-client
 -	🧑‍💼 Follow us on X: @BountyNook
 
+
+---
+
+## 🧩 Other Projects by the Author
+
+We also built a simple yet powerful Chrome Extension:
+
+### [Keep Teams / Slack Always Online](https://chromewebstore.google.com/detail/keep-teams-online/pbbdmfajhenpandbgeanadmmkonjkaja)
+
+> Keep TEAMS / SLACK always online, no away anymore!!!
+
+**How to use it:**
+
+1. Turn on the extension.
+2. Open Teams Web or Slack Web in a new tab (do not close it).
+3. Prevent your computer from auto-hibernating.
+4. Enjoy being always "Online" on desktop clients.
+
+This tool is lightweight, private, and perfect for remote workers.  
+✅ Over XX installs and growing!
+
+---
+
 ## 🤝 License
 
 This project is licensed under the MIT License. Feel free to fork, contribute, or adapt to your own needs.
