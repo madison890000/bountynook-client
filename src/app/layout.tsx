@@ -38,9 +38,19 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Need Help with Offline Tasks? Try BountyNook!',
-    description: 'Post a task. Earn a reward. Help or be helped — across cities.',
-    images: ['/og-image.png']
+    site: '@BountyNook', // 替换为你的 X 账号（若有）
+    creator: '@BountyNook', // 你自己的 X 用户名（若有）
+    title: 'BountyNook · 数字赏金任务平台',
+    description: '连接任务与赏金猎人，立刻加入 BountyNook。',
+    images: ['/og-image.png'],
+  },
+  other: {
+    'application-name': 'BountyNook',
+    'theme-color': '#1c1b18',
+    'color-scheme': 'dark',
+    'msapplication-TileColor': '#1c1b18',
+    'msapplication-TileImage': '/favicon.ico',
+    'rel-me': 'https://github.com/madison890000/bountynook-client', // ✅ GitHub 身份锚点
   },
   metadataBase: new URL('https://bountynook.com')
 }

@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BountyNook Frontend
 
-## Getting Started
+![BountyNook Logo](src/app/favicon.ico)
 
-First, run the development server:
+**BountyNook** is a modern digital bounty board platform where users can post tasks with rewards and others can complete them to earn bounties. This frontend project is built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [React Hook Form](https://react-hook-form.com/) for an elegant and efficient user experience.
+
+👉 Visit the platform: [https://bountynook.com](https://bountynook.com)
+
+---
+
+## ✨ Features
+
+- 🧭 **Task Marketplace** – View, apply for, and assign tasks with real-time updates
+- 🧾 **Reward Modes** – Supports online and offline bounty options with flexible input
+- 🔒 **Auth Integration** – User authentication, task ownership, and permissions
+- 🌏 **Multi-language Ready** – i18n integration for English and Chinese users
+- 🎨 **Dark UI Theme** – Beautiful, consistent styling with Tailwind and custom gradients
+- ⚙️ **Prisma + React Query** – Integrated with modern data fetching and backend schema
+
+---
+
+## 🧠 Tech Stack
+
+- **Framework:** Next.js 14 with App Router
+- **Styling:** Tailwind CSS, custom dark theme
+- **Forms:** React Hook Form + Zod validation
+- **Data:** React Query + REST API (Express backend)
+- **Auth:** JWT-based user login (via middleware)
+- **Localization:** Next-Intl
+
+---
+
+## 🧪 Local Development
 
 ```bash
+# Clone the repo
+git clone https://github.com/madison890000/bountynook-client
+cd bountynook
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📦 Folder Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```plaintext
+.
+├── app/                # App Router-based pages and layouts
+├── components/         # UI components and shared elements
+├── lib/                # API helpers, auth, and draft storage
+├── hooks/              # Custom React hooks
+├── public/             # Static assets, favicon, OG images
+├── styles/             # Tailwind base and custom CSS
+└── scripts/            # Sitemap generators, utilities
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
 
-## Learn More
+## 🔗 Project Links
+-	🌐 Website: https://bountynook.com
+-	💻 GitHub Repo: https://github.com/madison890000/bountynook-client
+-	🧑‍💼 Follow us on X: @BountyNook
 
-To learn more about Next.js, take a look at the following resources:
+## 🤝 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License. Feel free to fork, contribute, or adapt to your own needs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⸻
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Powered by independent makers, built for bounty hunters.
+Let tasks flow, let rewards follow.
