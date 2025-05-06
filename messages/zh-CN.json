@@ -141,7 +141,12 @@
   },
   "TaskDetail": {
     "alreadyApplied": "已申请，等待分配",
-    "appliedCountLabel": "人已申请"
+    "appliedCountLabel": "人已申请",
+    "assigneeCountLabel": "人已领取",
+    "assignConfirm": "关闭分配人员",
+    "assignConfirming": "正在关闭...",
+    "assignConfirmed": "任务指派已关闭",
+    "assignConfirmFailed": "关闭任务指派失败"
   },
   "LoginPage": {
     "title": "登录 BountyNook",

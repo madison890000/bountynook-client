@@ -9,8 +9,9 @@ import { useEffect, useState } from "react";
 import { getUserInfo } from "@/lib/auth";
 import { useRouter } from "next/navigation";
 import { AuthGuardButton } from "@/components/AuthGuardButton";
+import { Task } from "@/types/model";
 
-export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
+export function AssignSection({ task, taskId }: { task: Task, taskId: string }) {
   const queryClient = useQueryClient()
   const [user, setUser] = useState<any>(null)
 
@@ -62,7 +63,7 @@ export function AssignSection({ task, taskId }: { task: any, taskId: string }) {
                   }
                   mutation.mutate(app.id)
                 }}
-                disabled={mutation.isPending}
+                disabled={mutation.isPending || !!task.assignees?.some(assignee => assignee.id === app.user.id)}
                 className="px-6 py-3 rounded-lg font-bold tracking-wide text-yellow-100 border border-yellow-600 bg-gradient-to-br from-yellow-700 via-yellow-600 to-yellow-700 shadow-md hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {mutation.isPending ? '📜 分配中...' : `🏹 ${t('assignTo')}`}

@@ -76,6 +76,14 @@ export async function assignTask(taskId: string, applicationId: string) {
   })
 }
 
+// 指派某个申请者成为执行人
+export async function updateTaskStatus(taskId: string,status: string) {
+  return apiFetch(`/tasks/item/${taskId}/update-task-status`, {
+    method: 'POST',
+    body: JSON.stringify({ status }),
+  })
+}
+
 // 查我发布的任务
 export async function fetchMyTasks({ page = 1, pageSize = 10 }: { page?: number; pageSize?: number }) {
   const res = await apiFetch(`/tasks/my-created?page=${page}&pageSize=${pageSize}`)

@@ -141,7 +141,12 @@
   },
   "TaskDetail": {
     "alreadyApplied": "Already Applied",
-    "appliedCountLabel": "Applicants"
+    "appliedCountLabel": "Applicants",
+    "assigneeCountLabel": "Assignees",
+    "assignConfirm": "Close Assignment",
+    "assignConfirming": "Closing...",
+    "assignConfirmed": "Assignment closed successfully",
+    "assignConfirmFailed": "Failed to close assignment"
   },
   "LoginPage": {
     "title": "Log In to BountyNook",

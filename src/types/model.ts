@@ -22,11 +22,11 @@ export type Task = {
     email: string
     contact?: string
   }
-  assignee?: {
+  assignees?: {
     id: string
     name?: string | null
     email: string
-  }
+  }[]
   applications?: {
     id: string
     comment: string
