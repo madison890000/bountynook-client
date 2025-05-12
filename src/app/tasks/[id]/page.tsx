@@ -11,6 +11,7 @@ import { BasicInfoSection } from './_components/BasicInfoSection'
 import { useState } from 'react'
 import { useTranslations } from "next-intl";
 import { ConfirmAssignButton } from "./_components/ConfirmAssignButton";
+import { LinkSection } from './_components/LinkSection'
 
 export default function TaskDetailPage() {
   const params = useParams()
@@ -38,6 +39,8 @@ export default function TaskDetailPage() {
 
       <BasicInfoSection task={task} />
 
+      { (isAssignee || isCreator) && task.link && <LinkSection task={task} />}
+      
       <div
         className="mx-auto flex gap-12 w-fit px-4 py-2 rounded-xl border border-yellow-700 bg-gradient-to-br from-[#2a2926] to-[#1c1b18] shadow-[0_0_12px_rgba(255,215,0,0.08)]">
         <div className="flex items-center gap-3">

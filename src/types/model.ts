@@ -16,6 +16,7 @@ export type Task = {
   amount?: number;
   currency?: 'USD' | 'CNY';
   status: 'PENDING' | 'ASSIGNED' | 'COMPLETED'
+  link?: string;
   creator: {
     id: string
     name?: string | null

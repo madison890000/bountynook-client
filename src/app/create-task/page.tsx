@@ -20,6 +20,7 @@ const schema = z.object({
   amount: z.coerce.number().min(1, '奖励金额必须大于0').optional(),
   currency: z.enum(['USD', 'CNY']).optional(),
   rewardNote: z.string().optional(),
+  link: z.string().url('请输入有效的URL').optional(),
 })
 
 type FormData = z.infer<typeof schema>
@@ -72,6 +73,7 @@ export default function CreateTaskPage() {
         amount: undefined,
         currency: undefined,
         rewardNote: '',
+        link: '',
       })
       queryClient.invalidateQueries({ queryKey: ['tasks'] })
       autoToast.success('createTaskSuccess', { icon: '✅' })
@@ -168,6 +170,16 @@ export default function CreateTaskPage() {
             {errors.rewardNote && <p className="text-red-400 text-xs mt-1">{errors.rewardNote.message}</p>}
           </div>
         )}
+
+        {/* 任务链接 */}
+        <div>
+          <input
+            {...register('link')}
+            placeholder={t('taskLinkPlaceholder')}
+            className="w-full bg-[#2a2926] text-yellow-50 border border-yellow-700 p-3 rounded focus:outline-none focus:ring-2 focus:ring-yellow-600"
+          />
+          {errors.link && <p className="text-red-400 text-xs mt-1">{errors.link.message}</p>}
+        </div>
 
         {/* 发布按钮 */}
         <button

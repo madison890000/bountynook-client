@@ -36,9 +36,6 @@ export function BasicInfoSection({ task }: { task: Task }) {
 
         <p>🧑：{task.creator.name || 'Momo'}</p>
 
-        {task.assignee && (
-          <p>🤝：{task.assignee.name || 'Momo'}</p>
-        )}
       </div>
     </div>
   )

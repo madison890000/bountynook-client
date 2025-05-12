@@ -83,7 +83,8 @@
     "currency": "币种",
     "USD": "美元 (USD)",
     "CNY": "人民币 (CNY)",
-    "rewardNote": "奖励备注"
+    "rewardNote": "奖励备注",
+    "taskLinkPlaceholder": "填写任务链接"
   },
   "MyProfile": {
     "title": "编辑我的资料",

@@ -83,7 +83,8 @@
     "currency": "Currency",
     "USD": "USD (Dollar)",
     "CNY": "CNY (Yuan)",
-    "rewardNote": "Special reward notes"
+    "rewardNote": "Special reward notes",
+    "taskLinkPlaceholder": "Enter the task link"
   },
   "MyProfile": {
     "title": "Edit My Profile",
